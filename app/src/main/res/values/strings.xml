@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">THRYVE</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="student_email">"student@sheridancollege.ca"</string>
+    <string name="student_login">"First Last"</string>
+    <string name="registration">"Registration"</string>
+    <string name="c_register">"Complete Registration"</string>
+    <string name="first_name">"First Name"</string>
+    <string name="last_name">"Last Name"</string>
+    <string name="sheridan_number">"Sheridan ID Number"</string>
+    <string name="sheridan_email">"Sheridan E-mail Address"</string>
+    <string name="password">"Password"</string>
+    <string name="re_type_password">"Re-type Password"</string>
+
+    <string name="plan_your_edu_body_text">"Take advantage of these services and resources to explore options, set goals, and make the educational plans to achieve them."</string>
+    <string name="plan_your_career_body_text">"Services and online tools to help you select the right Sheridan program or map out education beyond graduation in your current program."</string>
+    <string name="cocurricular_body_text">"Services and online tools to help you select the right Sheridan program or map out education beyond graduation in your current program."</string>
+    <string name="find_work_body_text">"Whether you’re looking for job opportunities, preparing for an interview, or developing your portfolio, the Career Centre is here to help."</string>
+    <string name="visit_centre_body_text">"Visit the Career Centre at your local campus to find more information."</string>
+
+    <string name="quicktips_first_text">"A gateway to our picks for immediately-useful online resources for career exploration and educational planning."</string>
+    <string name="cruising_first_text">"Career Cruising is an interactive career planning resource with detailed descriptions of what people do in 600+ different Canadian occupations, as well as other career and educational planning tools."</string>
+    <string name="microcourse_first_text">"This course walks you through all the way from self-assessment to career exploration to educational planning.</string>
+    <string name="talkCounselor_first_text">"Career Counsellors are available to current students and grads to help you explore career options, set career goals, research labour market information, and plan further education."</string>
+
+    <string name="ccr_string1">"Sheridan’s Co-Curricular Record (CCR) program provides students with the opportunity to get involved in their community, make a difference, meet new people, and develop new skills and experiences that are valued by employers."</string>
+    <string name="ccr_string2">"Students have the opportunity to create a CCR record to document their out-of-classroom learning experiences while completing their academic studies. Students and alumni can use their CCR record, which is an official Sheridan document, to showcase their professional development to employers."</string>
+    <string name="ccr_string3">"Employers value out-of-classroom experiences and community involvement when hiring students and graduates, having a CCR record is concrete evidence of your motivation to take responsibility for your learning and professional development."</string>
+    <string name="ccr_string4">"A CCR record can also be used as supporting documentation for application packages for employment, for further post-secondary/graduate school and for scholarships and bursary applications."</string>
+    <string name="ccr_string5">"Current Sheridan students: Login to Access Sheridan, select the link “MySheridanCo-Curricular”"</string>
+    <string name="ccr_string6">"Visit the public CCR website: https://mysheridanccr.sheridancollege.ca/home.htm"</string>
+    <string name="ccr_string7">"For more information about Sheridan’s CCR, contact us directly at: mysheridanccr@sheridancollege.ca"</string>
+
+    <string name="educ_string1">"The Idea Generator helps you determine your career interest pattern and then suggests program which relate to your preference themes."</string>
+    <string name="educ_string2">"Many students decide to undertake further studies after their current program in order to pursue their interests and broaden career options. Sheridan has many pathways from diplomas to degrees and graduate certificates."</string>
+    <string name="educ_string3">"Information for students exploring degree-completion and Graduate Certificate options at colleges and universities around Ontario and elsewhere."</string>
+    <string name="educ_string4">"Career Counsellors are available to current students and grads to help you explore career options, set career goals, research labour market information, and plan further education."</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/record_headertext1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Sheridan's Co-Curricular Record (CCR) Program"
+            android:textColor="#A9A9A9"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/cocurricular_ImageView1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ccr" />
+
+        <TextView
+            android:id="@+id/record_subtext1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/ccr_string1"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/record_headertext2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="What is a co-curricular record?"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/record_subtext2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/ccr_string2"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/record_headertext3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Why should I invest the time to earn a co-curricular record?"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/record_subtext3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/ccr_string3"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/record_headertext4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="How can having co-curricular record give me an advantage?"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/record_subtext4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/ccr_string4"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/record_headertext5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="To find out what co-curricular record opportunities are happening at Sheridan visit the CCR’s Opportunities Directory"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/record_subtext5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/ccr_string5"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/record_subtext6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/ccr_string6"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/record_subtext7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_body"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/ccr_string7"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="15dp"/>
+
+        <ImageView
+            android:id="@+id/cocurricular_ImageView2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ccr_seal" />
+
+    </LinearLayout>
+
+</ScrollView>
