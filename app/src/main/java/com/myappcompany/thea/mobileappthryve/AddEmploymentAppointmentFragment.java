@@ -30,13 +30,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amplifyframework.core.Amplify;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Time;
+import java.nio.ByteBuffer;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -65,7 +66,13 @@ import retrofit2.Response;
 
 import static java.lang.StrictMath.random;
 import static java.time.ZonedDateTime.now;
-
+import com.amazonaws.ClientConfiguration;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3Client;
+import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
+import software.amazon.awssdk.services.s3.S3Client;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class AddEmploymentAppointmentFragment extends Fragment {
     //iggy did the below code
@@ -78,6 +85,11 @@ public class AddEmploymentAppointmentFragment extends Fragment {
     Button upload;
     private int count_files_added_emp = 0;
     //progressBar progressBar;
+    String bucketName = "mythryvebucket-2021";
+    String folderName = "folder1";
+    String fileNameInS3 = "";
+    String fileNameInLocalPC = "";
+    AwsBasicCredentials awsCreds;
     //iggy did the above
 
     //public static final String ARG_STUDENT = "argStudentAccount";
@@ -138,7 +150,22 @@ public class AddEmploymentAppointmentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_emp_add, container, false);
 
         //below is added by iggy
-        AmplifyInit.intializeAmplify(Objects.requireNonNull(getActivity()));
+        //AmplifyInit.intializeAmplify(Objects.requireNonNull(getActivity()));
+
+        java.security.Security.setProperty("networkaddress.cache.ttl" , "60");
+        awsCreds = AwsBasicCredentials.create(
+                "AKIASBEZPPNHMQM4BIGL",
+                "a5AhmoV1Pl3WfsNpDwZO73opGGD29ah3S+MUmkdF");
+
+        ClientConfiguration clientConfiguration = new ClientConfiguration();
+        clientConfiguration.setMaxErrorRetry(0);
+        clientConfiguration.setConnectionTimeout(3600000);
+        clientConfiguration.setSocketTimeout(3600000);
+        BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials("AKIASBEZPPNHMQM4BIGL", "a5AhmoV1Pl3WfsNpDwZO73opGGD29ah3S+MUmkdF");
+        AmazonS3Client amazonS3Client = new AmazonS3Client(basicAWSCredentials, clientConfiguration);
+        amazonS3Client.setRegion(com.amazonaws.regions.Region.getRegion(Regions.US_EAST_2));
+
+
         //above is added by iggy
         //empFragmentListener.onReceiveCurrentAccount();
 
@@ -391,10 +418,8 @@ public class AddEmploymentAppointmentFragment extends Fragment {
     private void UploadFile() {
 
         //InputStream exampleInputStream = getContentResolver().openInputStream(uri);
+        /*
         File exampleFile = new File(file_path1_emp);
-
-
-
         //il make this a set of strings
         //double randomNumber = (1000..9999).random(0,6);
         int max = 1000;
@@ -404,6 +429,9 @@ public class AddEmploymentAppointmentFragment extends Fragment {
         int showMeRand_emp = min + randomNum.nextInt(max);
         String string_showMeRand_emp = String.valueOf(showMeRand_emp);
         //System. out. println(showMe);
+        */
+
+        /*
         Amplify.Storage.uploadFile(
                 "UploadedFile" + string_showMeRand_emp,
                 exampleFile,
@@ -433,7 +461,7 @@ public class AddEmploymentAppointmentFragment extends Fragment {
                     storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
             );
         }
-
+        */
 
 
         UploadTask uploadTask=new UploadTask();
@@ -470,6 +498,100 @@ public class AddEmploymentAppointmentFragment extends Fragment {
                 return "failed";
             }
             */
+
+            int max = 1000;
+            int min = 1;
+            // create instance of Random class.
+            Random randomNum = new Random();
+
+            int showMeRand_emp = min + randomNum.nextInt(max);
+
+
+            int showMeRand_emp2 = min + randomNum.nextInt(max);
+
+
+            int showMeRand_emp3 = min + randomNum.nextInt(max);
+
+            while(showMeRand_emp == showMeRand_emp2 || showMeRand_emp == showMeRand_emp3 || showMeRand_emp2 == showMeRand_emp3){
+                showMeRand_emp = min + randomNum.nextInt(max);
+                showMeRand_emp2 = min + randomNum.nextInt(max);
+                showMeRand_emp3 = min + randomNum.nextInt(max);
+            }
+            String string_showMeRand_emp = String.valueOf(showMeRand_emp);
+            String string_showMeRand_emp2 = String.valueOf(showMeRand_emp2);
+            String string_showMeRand_emp3 = String.valueOf(showMeRand_emp3);
+
+            //last om strings list
+            if(strings[2] != null){
+                for(String str: strings){
+                    if(str != null){
+                        File exampleFile = new File(str);
+                        try{
+                            ClientConfiguration clientConfiguration = new ClientConfiguration();
+                            clientConfiguration.setMaxErrorRetry(0);
+                            clientConfiguration.setConnectionTimeout(3600000);
+                            clientConfiguration.setSocketTimeout(3600000);
+
+                            BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials("AKIASBEZPPNHMQM4BIGL", "a5AhmoV1Pl3WfsNpDwZO73opGGD29ah3S+MUmkdF");
+                            AmazonS3Client amazonS3Client = new AmazonS3Client(basicAWSCredentials, clientConfiguration);
+                            PutObjectRequest objectRequest = new PutObjectRequest(bucketName,exampleFile.getName() +':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3 ,exampleFile);
+                            amazonS3Client.putObject(objectRequest);
+
+                        }catch (Exception e){
+                            Toast.makeText(Objects.requireNonNull(getActivity()), "not working"+ e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                }
+            }
+            else if(strings[1] != null){
+                for(String str: strings){
+                    if(str != null){
+                        File exampleFile = new File(str);
+                        try{
+                            ClientConfiguration clientConfiguration = new ClientConfiguration();
+                            clientConfiguration.setMaxErrorRetry(0);
+                            clientConfiguration.setConnectionTimeout(3600000);
+                            clientConfiguration.setSocketTimeout(3600000);
+
+                            BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials("AKIASBEZPPNHMQM4BIGL", "a5AhmoV1Pl3WfsNpDwZO73opGGD29ah3S+MUmkdF");
+                            AmazonS3Client amazonS3Client = new AmazonS3Client(basicAWSCredentials, clientConfiguration);
+                            PutObjectRequest objectRequest = new PutObjectRequest(bucketName,exampleFile.getName() +':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':' ,exampleFile);
+                            amazonS3Client.putObject(objectRequest);
+
+                        }catch (Exception e){
+                            Toast.makeText(Objects.requireNonNull(getActivity()), "not working"+ e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                }
+            }
+            else if(strings[0] != null){
+                for(String str: strings){
+                    if(str != null){
+                        File exampleFile = new File(str);
+                        try{
+                            ClientConfiguration clientConfiguration = new ClientConfiguration();
+                            clientConfiguration.setMaxErrorRetry(0);
+                            clientConfiguration.setConnectionTimeout(3600000);
+                            clientConfiguration.setSocketTimeout(3600000);
+
+                            BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials("AKIASBEZPPNHMQM4BIGL", "a5AhmoV1Pl3WfsNpDwZO73opGGD29ah3S+MUmkdF");
+                            AmazonS3Client amazonS3Client = new AmazonS3Client(basicAWSCredentials, clientConfiguration);
+                            PutObjectRequest objectRequest = new PutObjectRequest(bucketName,exampleFile.getName() +':'+string_showMeRand_emp+':'+ ':' ,exampleFile);
+                            amazonS3Client.putObject(objectRequest);
+
+                        }catch (Exception e){
+                            Toast.makeText(Objects.requireNonNull(getActivity()), "not working"+ e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                }
+            }
+
             return "true";//remove this latter
         }
 

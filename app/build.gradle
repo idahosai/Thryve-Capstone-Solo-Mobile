@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 31
-    buildToolsVersion '29.0.2'
+    buildToolsVersion '30.0.2'
     defaultConfig {
         applicationId "com.myappcompany.thea.mobileappthryve"
         //i need to change this min sdk from 15 to 16 so that library amplifyframework:aws-storage-s3:1.6.4 can use it as is needed for that
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -23,31 +23,58 @@ android {
     }
     compileOptions {
         //below code put by iggy
-        coreLibraryDesugaringEnabled true
+        //coreLibraryDesugaringEnabled true
         //above code put by iggy
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
 }
-
+//just added
+group 'aws.test'
+version '1.0-SNAPSHOT'
+//apply plugin: 'java'
+sourceCompatibility = 1.8
+repositories {
+    mavenCentral()
+}
 dependencies {
     def lifecycle_version = "2.2.0"
     def room_version = "2.2.5"
 
+    implementation 'software.amazon.awssdk:s3:2.17.7'
+    implementation 'com.amazonaws:aws-java-sdk-bom:1.11.1000'
+    testImplementation group: 'junit', name: 'junit', version: '4.11'
+    implementation 'com.amazonaws:aws-android-sdk-core:2.6.+'
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.6.+'
+    implementation 'com.amazonaws:aws-android-sdk-ddb:2.6.+'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //implementation 'androidx.appcompat:appcompat:1.0.2'
     //implementation 'androidx.appcompat:design:1.0.2'
-
     //below code put by iggy
+    /*
     implementation 'com.amplifyframework:core:1.28.1'
-
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    */
     //got the bottom ones
+    /*
     def aws_version = "2.16.+"
-    implementation "com.amazonaws:aws-android-sdk-s3:$aws_version"
-    implementation ("com.amazonaws:aws-android-sdk-mobile-client:$aws_version") { transitive = true }
+    */
+    //implementation "com.amazonaws:aws-android-sdk-s3:$aws_version"
+    //implementation ("com.amazonaws:aws-android-sdk-mobile-client:$aws_version") { transitive = true }
+    /*
     implementation 'com.amplifyframework:aws-storage-s3:1.6.4'
     implementation 'com.amplifyframework:aws-auth-cognito:1.6.4'
+    */
+    //implementation 'com.amazonaws:aws-java-sdk:1.12.85'
+    /*
+    implementation('com.amazonaws:aws-java-sdk:1.12.85') {
+        exclude group: 'com.amazonaws', module: 'aws-android-sdk-core'
+    }
+    */
+
     //implementation 'com.amplifyframework:core:1.6.4'
     //above code put by iggy
 
