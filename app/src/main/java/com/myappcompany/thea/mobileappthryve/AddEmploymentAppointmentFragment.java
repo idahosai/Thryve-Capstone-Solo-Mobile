@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
@@ -46,6 +47,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -81,9 +83,18 @@ public class AddEmploymentAppointmentFragment extends Fragment {
     String file_path1_emp=null;
     String file_path2_emp=null;
     String file_path3_emp=null;
+    String file_numbers1_emp=null;
+    String file_numbers2_emp=null;
+    String file_numbers3_emp=null;
+    int countfiles = 0;
+    boolean fileshasbeenuploaded = false;
     TextView file_name;
-    Button upload;
+    //Button upload;
     private int count_files_added_emp = 0;
+    Appointment newAppointment;
+    int showMeRand_emp;
+    int showMeRand_emp2;
+    int showMeRand_emp3;
     //progressBar progressBar;
     String bucketName = "mythryvebucket-2021";
     String folderName = "folder1";
@@ -194,9 +205,10 @@ public class AddEmploymentAppointmentFragment extends Fragment {
                 }
             }
         });
-        upload = view.findViewById(R.id.btn_select_file_emp);
-        file_name = view.findViewById(R.id.txt_file_name_emp);
 
+        file_name = view.findViewById(R.id.txt_file_name_emp);
+        /*
+        upload = view.findViewById(R.id.btn_select_file_emp);
         upload.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -210,6 +222,7 @@ public class AddEmploymentAppointmentFragment extends Fragment {
                 }
             }
         });
+        */
         //above code is by iggy
         //
         editTextEmpStudentNotes = (EditText) view.findViewById(R.id.edit_text_emp_studentnotes);
@@ -298,22 +311,135 @@ public class AddEmploymentAppointmentFragment extends Fragment {
                 String newDescription = editTextEmpDescription.getText().toString();
                 String newStudentNotes = editTextEmpStudentNotes.getText().toString();
                 //below has iggy
-                File file1=new File(file_path1_emp);
-                File file2=new File(file_path2_emp);
-                File file3=new File(file_path3_emp);
+                //these may be the cause of the errors as the strings are null currently
+                //File file1=new File(file_path1_emp);
+                //File file2=new File(file_path2_emp);
+                //File file3=new File(file_path3_emp);
+
                 //i may have to use file_path1_emp
                 //i may have to use file_path2_emp
                 //i may have to use file_path3_emp
 
+                //i should do this
+                //buttonBookEmpAppt.setEnabled(false);
+
+                //if they press this button twice then get go in array & remove from big
+
+                /*
+                try{
+                    //String bucketName = "*** Bucket name ***";
+                    //String keyName = "*** Key name ****";
+                    ClientConfiguration clientConfiguration = new ClientConfiguration();
+                    clientConfiguration.setMaxErrorRetry(0);
+                    clientConfiguration.setConnectionTimeout(3600000);
+                    clientConfiguration.setSocketTimeout(3600000);
+                    BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials("AKIASBEZPPNHMQM4BIGL", "a5AhmoV1Pl3WfsNpDwZO73opGGD29ah3S+MUmkdF");
+                    AmazonS3Client amazonS3Client = new AmazonS3Client(basicAWSCredentials, clientConfiguration);
+                    amazonS3Client.deleteObject(new DeleteObjectRequest(bucketName,exampleFile.getName() +':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3));
+                }catch (Exception e){
+                    Toast.makeText(Objects.requireNonNull(getActivity()), "not working"+ e.toString(), Toast.LENGTH_SHORT).show();
+                }
+                */
+
+                int max = 1000;
+                int min = 1;
+
+                // create instance of Random class.
+                Random randomNum = new Random();
+                showMeRand_emp = min + randomNum.nextInt(max);
+                showMeRand_emp2 = min + randomNum.nextInt(max);
+                showMeRand_emp3 = min + randomNum.nextInt(max);
+                while(showMeRand_emp == showMeRand_emp2 || showMeRand_emp == showMeRand_emp3 || showMeRand_emp2 == showMeRand_emp3){
+                    showMeRand_emp = min + randomNum.nextInt(max);
+                    showMeRand_emp2 = min + randomNum.nextInt(max);
+                    showMeRand_emp3 = min + randomNum.nextInt(max);
+                }
+                String string_showMeRand_emp = String.valueOf(showMeRand_emp);
+                String string_showMeRand_emp2 = String.valueOf(showMeRand_emp2);
+                String string_showMeRand_emp3 = String.valueOf(showMeRand_emp3);
+
+                File file1;
+                File file2;
+                File file3;
+                //last om strings list
+
+                //boolean outofloop = false;
+                if(file_path3_emp!=null){
+                    file_numbers1_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3;
+                    file_numbers2_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3;
+                    file_numbers3_emp= ':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3;
+                    //buttonBookEmpAppt.setEnabled(false);
+                    UploadFile();
+
+
+                    /*
+                    try {
+                        TimeUnit.SECONDS.sleep(20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    */
+
+
+                    //while(fileshasbeenuploaded != true){
+
+                    //}
+                    //for some reason this says that fileshasbeenuploaded = false still
+                    //if(fileshasbeenuploaded == true){
+                    //    insertNewEmpForm(newAppointment);
+                    //}
+                    //insertNewEmpForm(newAppointment);
+                    /*
+                    while (fileshasbeenuploaded == false){
+                        outofloop = false;
+                        if(fileshasbeenuploaded == tri)
+                    }
+                    */
+                    file1 =new File(file_path1_emp);
+                    file2 =new File(file_path2_emp);
+                    file3 =new File(file_path3_emp);
+
+                    Toast.makeText(Objects.requireNonNull(getActivity()), "3 File Uploaded", Toast.LENGTH_SHORT).show();
+                    newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, file2.getName()+file_numbers2_emp, file3.getName()+file_numbers3_emp, "P", false);
+                    insertNewEmpForm(newAppointment);
+                }
+                else if(file_path2_emp!=null){
+
+                    file_numbers1_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':';
+                    file_numbers2_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':';
+
+                    UploadFile();
+
+                    file1 =new File(file_path1_emp);
+                    file2 =new File(file_path2_emp);
+
+                    Toast.makeText(Objects.requireNonNull(getActivity()), "2 File Uploaded", Toast.LENGTH_SHORT).show();
+                    newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, file2.getName()+file_numbers2_emp, "x", "P", false);
+                    insertNewEmpForm(newAppointment);
+                }
+                else if(file_path1_emp!=null){
+                    file_numbers1_emp=':'+string_showMeRand_emp+':' + ':';
+
+                    UploadFile();
+
+                    file1 =new File(file_path1_emp);
+
+                    Toast.makeText(Objects.requireNonNull(getActivity()), "1 File uploaded", Toast.LENGTH_SHORT).show();
+                    newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, "x", "x", "P", false);
+                    insertNewEmpForm(newAppointment);
+                }
+                else{
+
+                    newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", "x", "x", "x", "P", false);
+                    System.out.println("HELLOOOOOOO");
+                    insertNewEmpForm(newAppointment);
+                }
                 //above is iggy
-
-                Appointment newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName(), file2.getName(), file3.getName(), "P", false);
+                //iggy edited the above line
                 //newAppt = newAppointment;
-                System.out.println("HELLOOOOOOO");
-                insertNewEmpForm(newAppointment);
-
+                //      System.out.println("HELLOOOOOOO");
+                //      insertNewEmpForm(newAppointment);
                 //System.out.println("newEmpForm2 id: " + newEmpForm.getId());
-
             }
         });
 
@@ -470,16 +596,91 @@ public class AddEmploymentAppointmentFragment extends Fragment {
 
     public class UploadTask extends AsyncTask<String,String,String> {
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //progressBar.setVisibility(View.GONE);
+            /*
             if(s.equalsIgnoreCase("true")){
                 Toast.makeText(Objects.requireNonNull(getActivity()), "File uploaded", Toast.LENGTH_SHORT).show();
             }
             else{
                 Toast.makeText(Objects.requireNonNull(getActivity()), "Failed Upload", Toast.LENGTH_SHORT).show();
             }
+            */
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssx");
+            String formatStartTime = startDateTime.format(formatter);
+            String formatEndTime = endDateTime.format(formatter);
+            String formatSubmitTime = submittedEndTime.format(formatter);
+            String newTitle = editTextEmpTitle.getText().toString();
+            String newDescription = editTextEmpDescription.getText().toString();
+            String newStudentNotes = editTextEmpStudentNotes.getText().toString();
+            //below has iggy
+            File file1;
+            File file2;
+            File file3;
+
+
+            if(s.equalsIgnoreCase("1")){
+                /*
+                file1 =new File(file_path1_emp);
+
+                Toast.makeText(Objects.requireNonNull(getActivity()), "1 File uploaded", Toast.LENGTH_SHORT).show();
+                newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, "x", "x", "P", false);
+                */
+                System.out.println("HELLOOOOOOO");
+                fileshasbeenuploaded = true;
+                //insertNewEmpForm(newAppointment);
+            }
+            else if (s.equalsIgnoreCase("2")){
+                /*
+                file1 =new File(file_path1_emp);
+                file2 =new File(file_path2_emp);
+
+                Toast.makeText(Objects.requireNonNull(getActivity()), "2 File Uploaded", Toast.LENGTH_SHORT).show();
+                newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, file2.getName()+file_numbers2_emp, "x", "P", false);
+                */
+                System.out.println("HELLOOOOOOO");
+                fileshasbeenuploaded = true;
+                //insertNewEmpForm(newAppointment);
+            }
+            else if(s.equalsIgnoreCase("3")){
+                /*
+                file1 =new File(file_path1_emp);
+                file2 =new File(file_path2_emp);
+                file3 =new File(file_path3_emp);
+
+                Toast.makeText(Objects.requireNonNull(getActivity()), "3 File Uploaded", Toast.LENGTH_SHORT).show();
+                newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, file2.getName()+file_numbers2_emp, file3.getName()+file_numbers3_emp, "P", false);
+                */
+                System.out.println("HELLOOOOOOO");
+                fileshasbeenuploaded = true;
+                //insertNewEmpForm(newAppointment);
+            }
+            else{
+                Toast.makeText(Objects.requireNonNull(getActivity()), "Failed Upload", Toast.LENGTH_SHORT).show();
+            }
+
+
+            /*
+            if(countfiles == 1){
+                newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, file2.getName(), file3.getName(), "P", false);
+                System.out.println("HELLOOOOOOO");
+                insertNewEmpForm(newAppointment);
+            }
+            else if(countfiles == 2){
+                newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, file2.getName()+file_numbers2_emp, file3.getName(), "P", false);
+                System.out.println("HELLOOOOOOO");
+                insertNewEmpForm(newAppointment);
+            }
+            else if (countfiles == 3){
+                newAppointment = new Appointment(newTitle, formatStartTime, formatEndTime, formatSubmitTime, formatStartTime, newDescription, newStudentNotes, "x", file1.getName()+file_numbers1_emp, file2.getName()+file_numbers2_emp, file3.getName()+file_numbers3_emp, "P", false);
+                System.out.println("HELLOOOOOOO");
+                insertNewEmpForm(newAppointment);
+            }
+            */
+
         }
 
         @Override
@@ -501,28 +702,31 @@ public class AddEmploymentAppointmentFragment extends Fragment {
 
             int max = 1000;
             int min = 1;
+
             // create instance of Random class.
             Random randomNum = new Random();
-
+            /*
             int showMeRand_emp = min + randomNum.nextInt(max);
-
-
             int showMeRand_emp2 = min + randomNum.nextInt(max);
-
-
             int showMeRand_emp3 = min + randomNum.nextInt(max);
-
             while(showMeRand_emp == showMeRand_emp2 || showMeRand_emp == showMeRand_emp3 || showMeRand_emp2 == showMeRand_emp3){
                 showMeRand_emp = min + randomNum.nextInt(max);
                 showMeRand_emp2 = min + randomNum.nextInt(max);
                 showMeRand_emp3 = min + randomNum.nextInt(max);
             }
+            */
             String string_showMeRand_emp = String.valueOf(showMeRand_emp);
             String string_showMeRand_emp2 = String.valueOf(showMeRand_emp2);
             String string_showMeRand_emp3 = String.valueOf(showMeRand_emp3);
 
             //last om strings list
             if(strings[2] != null){
+                countfiles = 3;
+                /*
+                file_numbers1_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3;
+                file_numbers2_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3;
+                file_numbers3_emp= ':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':'+string_showMeRand_emp3;
+                */
                 for(String str: strings){
                     if(str != null){
                         File exampleFile = new File(str);
@@ -546,6 +750,11 @@ public class AddEmploymentAppointmentFragment extends Fragment {
                 }
             }
             else if(strings[1] != null){
+                countfiles = 2;
+                /*
+                file_numbers1_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':';
+                file_numbers2_emp=':'+string_showMeRand_emp+':'+string_showMeRand_emp2 + ':';
+                */
                 for(String str: strings){
                     if(str != null){
                         File exampleFile = new File(str);
@@ -568,7 +777,12 @@ public class AddEmploymentAppointmentFragment extends Fragment {
 
                 }
             }
+            //ITS POSSIBLE THAT THIS IS THE ONLY ONE THAT RUNS SO I MUST CHECK FOR IT
             else if(strings[0] != null){
+                countfiles = 1;
+                /*
+                file_numbers1_emp=':'+string_showMeRand_emp+':' + ':';
+                */
                 for(String str: strings){
                     if(str != null){
                         File exampleFile = new File(str);
@@ -591,8 +805,8 @@ public class AddEmploymentAppointmentFragment extends Fragment {
 
                 }
             }
-
-            return "true";//remove this latter
+            return String.valueOf(countfiles);
+            //return "true";
         }
 
 

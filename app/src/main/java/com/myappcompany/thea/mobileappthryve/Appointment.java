@@ -28,10 +28,13 @@ public class Appointment {
     @SerializedName("staff_notes")
     private String staffNotes;
 
+    @SerializedName("attachment1")
     private String attachment1;
 
+    @SerializedName("attachment2")
     private String attachment2;
 
+    @SerializedName("attachment3")
     private String attachment3;
 
     private String status;

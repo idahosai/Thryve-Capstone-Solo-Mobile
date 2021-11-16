@@ -362,12 +362,6 @@
             android:layout_height="wrap_content"
             android:text="name of file:" />
 
-        <Button
-            android:id="@+id/btn_select_file_emp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sellect File" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_book_emp_appt"
             android:layout_width="wrap_content"
