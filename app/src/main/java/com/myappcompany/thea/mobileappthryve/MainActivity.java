@@ -104,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements AddEmploymentAppo
             case R.id.nav_centre:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CentreFragment()).commit();
                 break;
+            case R.id.nav_score_professional_photo:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ScoreProfessionalPhotoFragment()).commit();
+                break;
+
             /*case R.id.nav_share:
                 Toast.makeText(this, "Share!", Toast.LENGTH_SHORT).show();
                 break;

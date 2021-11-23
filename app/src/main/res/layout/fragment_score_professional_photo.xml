@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_title_score_professional_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="60dp"
+        android:text="Score Professional Photo"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_upload_spp"
+        android:layout_width="112dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="19dp"
+        android:text="Upload"
+        app:layout_constraintEnd_toStartOf="@+id/btn_linkedin_spp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_score_professional_photo" />
+
+    <Button
+        android:id="@+id/btn_linkedin_spp"
+        android:layout_width="112dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="78dp"
+        android:background="@drawable/rounded_corners"
+        android:text="LinkedIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_upload_spp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_score_professional_photo" />
+
+    <TextView
+        android:id="@+id/txt_filename_spp"
+        android:layout_width="302dp"
+        android:layout_height="171dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="40dp"
+        android:text="filename:"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_upload_spp" />
+
+    <TextView
+        android:id="@+id/txt_trustworthiness_spp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="11dp"
+        android:text="Trustworthyness:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_filename_spp" />
+
+    <TextView
+        android:id="@+id/txt_likeability_spp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="20dp"
+        android:text="Likeability:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_trustworthiness_spp" />
+
+    <Button
+        android:id="@+id/btn_getphotoscore_spp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="564dp"
+        android:layout_marginEnd="110dp"
+        android:text="Get Photo Score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_score_professional_photo" />
+
+    <ImageView
+        android:id="@+id/img_photo_spp"
+        android:layout_width="139dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="136dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_score_professional_photo"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>

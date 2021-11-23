@@ -44,6 +44,11 @@
             android:id="@+id/nav_centre"
             android:icon="@drawable/ic_centre"
             android:title="Visit the Career Centre" />
+
+        <item
+            android:id="@+id/nav_score_professional_photo"
+            android:icon="@drawable/ic_score_professional_photo"
+            android:title="Score Professional Photo" />
     </group>
 
     <!--<item android:title="Communicate">
